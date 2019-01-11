@@ -11,8 +11,25 @@
   "bin": {
     "dappnodesdk": "./src/dappnodesdk.js"
   },
-  "author": "Eduardo Antuña <eduadiez@gmail.com> (https://github.com/eduadiez)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dappnode/DAppNodeSDK.git"
+  },
+  "keywords": [
+    "cli",
+    "dappnode",
+    "ethereum"
+  ],
+  "author": "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
+  "contributors": [
+    "Eduardo Antuña <eduadiez@gmail.com> (https://github.com/eduadiez)",
+    "dappLion (https://github.com/dapplion)"
+  ],
   "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/dappnode/DAppNodeSDK/issues"
+  },
+  "homepage": "https://github.com/dappnode/DAppNodeSDK#readme",
   "dependencies": {
     "@aragon/os": "^4.0.0-alpha.2",
     "chalk": "^2.4.1",
@@ -32,6 +49,26 @@
     "eslint": "^5.10.0",
     "eslint-config-google": "^0.11.0",
     "mocha": "^5.2.0",
+    "husky": "^1.2.0",
+    "lint-staged": "^8.1.0",
     "prettier": "^1.15.3"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint && npm run test"
+    }
+  },
+  "lint-staged": {
+    "linters": {
+      "*.js": [
+        "eslint --fix",
+        "documentation lint",
+        "git add"
+      ]
+    }
   }
 }
